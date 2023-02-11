@@ -18,7 +18,7 @@ const reducer = (state, action)=>{
         case "USER_SIGNIN_SUCCESS":
             return {...state, userInfo: action.payload}
         case "CREATE_USER_SUCCESS":
-            return {userInfo: action.payload};
+            return {...state, userInfo: action.payload};
         case "SIGNOUT_SUCCESS":
             return { userInfo: null};
         default:

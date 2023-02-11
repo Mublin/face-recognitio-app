@@ -1,6 +1,7 @@
 const express = require("express")
 const userRouter = require("./routes/userRoute")
 const dotenv = require("dotenv").config()
+const path = require("path")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const seedRouter = require("./routes/seedRoute")
@@ -18,6 +19,17 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>{
 
 app.use("/api/users", userRouter)
 app.use("/api/seed", seedRouter)
+
+
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/frontend/build")))
+app.get("*", (req, res)=>{
+    res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
+})
+app.use((err, req, res, next)=>{
+    res.status(500).send({message: err.message})
+})
 
 
 

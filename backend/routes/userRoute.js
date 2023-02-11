@@ -121,5 +121,41 @@ userRouter.post("/image", utils.isAuth, expressasynchandler(async (req, res)=>{
     //   console.log(error)  
     // }
 }))
+userRouter.get("/profile/:id", utils.isAuth, expressasynchandler(async(req, res)=>{
+    const {id} = req.params;
+    const user = await User.findOne({username: id})
+    if (user) {
+        res.send({
+                _id: user._id,
+                name: user.name,
+                username: user.username,
+                email: user.email,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+                token: utils.generateToken(user)
+        })
+    } else {
+        res.status(401).send({message: "user not found"})
+    }
+}))
+
+userRouter.put("/profile/:id/update", utils.isAuth, expressasynchandler(async(req, res)=>{
+    const {id} = req.params;
+    const user = await User.findOne({username: id})
+    if (user) {
+        const { fullName, username, dob, profilepic, email} = req.body;
+        user.name = fullName;
+        user.username = username;
+        user.dob = dob;
+        user.picture = profilepic
+        user.email = email;
+        const updatedUser = await user.save();
+        res.status(200).send({message: "User Updated Successful", updatedUser})
+    } else {
+        res.status(401).send({message: "user not found"})
+    }
+}))
+
+
 
 module.exports = userRouter;
