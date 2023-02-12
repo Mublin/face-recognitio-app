@@ -12,7 +12,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
-mongoose.connect(process.env.MONGODB_URI).then(()=>{
+console.log(process.env.MONGODB_URI)
+mongoose.connect("mongodb://127.0.0.1/face-detect").then(()=>{
     console.log ("connected to db")
 }).catch((error)=> {
     console.log(error.message)
@@ -23,10 +24,10 @@ app.use("/api/seed", seedRouter)
 
 
 
-let dirname = path.resolve();
-app.use(express.static(path.join(dirname, "/frontend/build")))
+// let __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/frontend/build")))
 app.get("*", (req, res)=>{
-    res.sendFile(path.join(dirname, "/frontend/build/index.html"))
+    res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
 })
 app.use((err, req, res, next)=>{
     res.status(500).send({message: err.message})
@@ -36,6 +37,6 @@ app.use((err, req, res, next)=>{
 
 
 
-app.listen(process.env.PORT || 5000, function siu() {
+app.listen(process.env.PORT || 6000, function siu() {
     console.log(`running at port ${process.env.port}`)
 })

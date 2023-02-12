@@ -67,7 +67,7 @@ export default function ProfileScreen() {
     const fetchData = async ()=>{
       dispatch({type: "FETCH_REQUEST"});
     try {
-      const {data} = await axios.get(`http://localhost:4550/api/users/profile/${id}`,{
+      const {data} = await axios.get(`/api/users/profile/${id}`,{
         headers: { Authorization: `Bearer ${userInfo.token}`}
       })
       console.log(data)
