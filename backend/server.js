@@ -1,7 +1,8 @@
 const express = require("express")
-const userRouter = require("./routes/userRoute")
-const dotenv = require("dotenv").config()
+const dotenv = require("dotenv")
+dotenv.config()
 const path = require("path")
+const userRouter = require("./routes/userRoute")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const seedRouter = require("./routes/seedRoute")
@@ -22,10 +23,10 @@ app.use("/api/seed", seedRouter)
 
 
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/frontend/build")))
+let dirname = path.resolve();
+app.use(express.static(path.join(dirname, "/frontend/build")))
 app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
+    res.sendFile(path.join(dirname, "/frontend/build/index.html"))
 })
 app.use((err, req, res, next)=>{
     res.status(500).send({message: err.message})
