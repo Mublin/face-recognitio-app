@@ -94,10 +94,26 @@ code {
     display: flex;
     max-height: 79vh;
   }
+  .zlatan{
+    transform: scale(0);
+  }
+  .home.class main{
+    margin: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 80vw;
+  }
 }
 
 
-
+@media only screen and (min-width: 751px) {
+  .action-screen{
+    width: 100vw;
+    height: 88vh;
+  }
+}
 
 
 .home.divs{
@@ -134,10 +150,6 @@ nav{
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-}
-.action-screen{
-  width: 100vw;
-  height: 88vh;
 }
 button.action{
   padding: 6px 16px;

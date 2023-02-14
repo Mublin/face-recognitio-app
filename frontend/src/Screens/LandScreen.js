@@ -15,7 +15,7 @@ export default function LandScreen() {
                 <h4 className='tagline'>Unlock the Power of Cutting-Edge Technology</h4>
                 <button className='button action'><Link to={"/home"} className="call">Get Started Today</Link></button>
             </div>
-            <div></div>
+            <div className="zlatan"></div>
         </main>
     </div>
     </div>

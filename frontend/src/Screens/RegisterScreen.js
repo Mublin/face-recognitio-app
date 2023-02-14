@@ -11,7 +11,7 @@ export default function RegisterScreen() {
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const navigate = useNavigate()
-    const {state, Cdispatch} = useContext(Store)
+    const {state, dispatch: Cdispatch} = useContext(Store)
     const {userInfo} = state
     useEffect(()=>{
         if (userInfo) {
@@ -55,7 +55,7 @@ export default function RegisterScreen() {
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='username'>Username c8b13812999a458584af7db40bc1ad93<br></br>
+                        <label htmlFor='username'>Username <br></br>
                             <input type={"text"} name="username" onChange={(e)=> setUsername(e.target.value)} />
                         </label>
                     </div>
