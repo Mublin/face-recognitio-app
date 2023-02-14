@@ -22,7 +22,7 @@ export default function RegisterScreen() {
         e.preventDefault();
         if (password === cPassword) {
             try {
-                const {data}= await axios.post(`/api/users/register`, {
+                const {data}= await axios.post(`http://localhost:${process.env.port}/api/users/register`, {
                     fullName,
                     password,
                     username,

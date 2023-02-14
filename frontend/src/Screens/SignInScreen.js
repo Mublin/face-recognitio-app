@@ -28,7 +28,7 @@ export default function SignInScreen() {
         e.preventDefault();
         Cdispatch({type: "USER_SIGNIN_REQUEST"})
         try {
-            const {data} = await axios.post(`/api/users/signin`, {
+            const {data} = await axios.post(`http://localhost:${process.env.port}/api/users/signin`, {
                 email,
                 password
             })

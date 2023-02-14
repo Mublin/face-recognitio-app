@@ -42,7 +42,7 @@ export default function ProfileScreen() {
     e.preventDefault()
     try {
       dispatch({type:"UPDATE_REQUEST"})
-      const {data} = await axios.put(`/api/users/profile/update`,
+      const {data} = await axios.put(`http://localhost:${process.env.port}/api/users/profile/update`,
       {
         fullName,
         username,
@@ -69,7 +69,7 @@ export default function ProfileScreen() {
     const fetchData = async ()=>{
       dispatch({type: "FETCH_REQUEST"});
     try {
-      const {data} = await axios.get(`/api/users/profile/${id}`,{
+      const {data} = await axios.get(`http://localhost:${process.env.port}/api/users/profile/${id}`,{
         headers: { Authorization: `Bearer ${userInfo.token}`}
       })
       // console.log(data)

@@ -67,6 +67,9 @@ userRouter.post("/register", async (req, res)=>{
         res.status(401).send({message: "User is not created"})
     }
 })
+userRouter.get("/sign", (req,res)=>{
+    res.send({message: "SIUUUUUUUU"})
+})
 userRouter.post("/signin", expressasynchandler(async (req, res)=>{
     const { password, email} = req.body;
     const user = await User.findOne({email})
