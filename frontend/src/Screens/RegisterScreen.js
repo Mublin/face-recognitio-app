@@ -22,7 +22,7 @@ export default function RegisterScreen() {
         e.preventDefault();
         if (password === cPassword) {
             try {
-                const {data}= await axios.post(`/api/users/register`, {
+                const {data}= await axios.post(`http://localhost:4550/api/users/register`, {
                     fullName,
                     password,
                     username,
@@ -40,39 +40,39 @@ export default function RegisterScreen() {
         }
     }
   return (
-    <div>
-        <main>
-            <div>
-                <form onSubmit={submitHandler}>
+    <div className='action-screen'>
+        <section>
+            <div className='forms'>
+                <form className='input register' onSubmit={submitHandler}>
                     <div>
-                        <label htmlFor='Full-Name'> Full-Name:
+                        <label htmlFor='Full-Name'> Full-Name <br></br>
                             <input type={"text"} name="Full-Name" onChange={(e)=> setFullName(e.target.value)} />
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='email'> E-mail:
+                        <label htmlFor='email'> E-mail <br></br>
                             <input type={"email"} name="email" onChange={(e)=> setEmail(e.target.value)} />
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='username'>Username:
+                        <label htmlFor='username'>Username <br></br>
                             <input type={"text"} name="username" onChange={(e)=> setUsername(e.target.value)} />
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='Password'> Password:
+                        <label htmlFor='Password'> Password <br></br>
                             <input type={"password"} name="password" onChange={(e)=> setPassword(e.target.value)} />
                         </label>
                     </div>
-                    <div>
-                        <label htmlFor='c-password'> Confirm-Password:
+                    <div className='password'>
+                        <label htmlFor='c-password'> Confirm-Password <br></br>
                             <input type={"password"} name="confirm-password" onChange={(e)=> setCPassword(e.target.value)} />
                         </label>
                     </div>
                     <button className='action'>Submit</button>
                 </form>
             </div>
-        </main>
+        </section>
     </div>
   )
 }

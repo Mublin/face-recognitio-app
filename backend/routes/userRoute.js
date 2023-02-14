@@ -14,7 +14,7 @@ const userRouter = express.Router()
 
 const stub = ClarifaiStub.grpc();
 const metadata = new grpc.Metadata();
-metadata.set("authorization", "Key 5ac247ce9ae24b5b8525c3e9858820e6");
+metadata.set("authorization", `Key ${process.env.API_KEY}`);
 
 function predictFace(imageUrl) {
     return new Promise((resolve, reject)=> {
@@ -95,8 +95,7 @@ userRouter.post("/image", utils.isAuth, expressasynchandler(async (req, res)=>{
         const result = await predictFace(imageSrc)
         res.send({result})
     } catch (error) {
-        console.log(error)
-        res.status(401).send(error)
+        res.status(401).send({message : error.message})
     }
     // try {
     //     const {newData} = await axios.post(`"https://api.clarifai.com/v2/models/fe995da8cb73490f8556416ecf25cea3/versions/face-detect/outputs`, {
@@ -139,18 +138,27 @@ userRouter.get("/profile/:id", utils.isAuth, expressasynchandler(async(req, res)
     }
 }))
 
-userRouter.put("/profile/:id/update", utils.isAuth, expressasynchandler(async(req, res)=>{
-    const {id} = req.params;
-    const user = await User.findOne({username: id})
+userRouter.put("/profile/update", utils.isAuth, expressasynchandler(async(req, res)=>{
+    const { username } = req.user;
+    // console.log(username)
+    const user = await User.findOne({username})
     if (user) {
         const { fullName, username, dob, profilepic, email} = req.body;
         user.name = fullName;
         user.username = username;
         user.dob = dob;
-        user.picture = profilepic
+        user.picture = profilepic;
         user.email = email;
+        // user.token = utils.generateToken(user);
+        // console.log(user.token)
         const updatedUser = await user.save();
-        res.status(200).send({message: "User Updated Successful", updatedUser})
+        res.status(200).send({message: "User Updated Successful", updatedUser: {
+            name: user.name,
+            username: user.username,
+            picture: user.picture,
+            email: user.email,
+            token: utils.generateToken(user)
+        }})
     } else {
         res.status(401).send({message: "user not found"})
     }

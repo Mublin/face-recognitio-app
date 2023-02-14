@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.94f0307c.css",
+    "main.js": "/static/js/main.8dc23601.js",
+    "static/js/787.5e667bc4.chunk.js": "/static/js/787.5e667bc4.chunk.js",
+    "static/media/Mubleen_website_landscape_background_face_detection_image_afric_6978cfc6-f8e7-476d-bac0-f6b1dd60cb4b.jpg": "/static/media/Mubleen_website_landscape_background_face_detection_image_afric_6978cfc6-f8e7-476d-bac0-f6b1dd60cb4b.8b5d42463cfec89068ef.jpg",
+    "index.html": "/index.html",
+    "main.94f0307c.css.map": "/static/css/main.94f0307c.css.map",
+    "main.8dc23601.js.map": "/static/js/main.8dc23601.js.map",
+    "787.5e667bc4.chunk.js.map": "/static/js/787.5e667bc4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94f0307c.css",
+    "static/js/main.8dc23601.js"
+  ]
+}

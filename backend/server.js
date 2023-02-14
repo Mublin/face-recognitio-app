@@ -12,8 +12,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
-console.log(process.env.MONGODB_URI)
-mongoose.connect("mongodb://127.0.0.1/face-detect").then(()=>{
+// console.log(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log ("connected to db")
 }).catch((error)=> {
     console.log(error.message)
@@ -22,13 +22,14 @@ mongoose.connect("mongodb://127.0.0.1/face-detect").then(()=>{
 app.use("/api/users", userRouter)
 app.use("/api/seed", seedRouter)
 
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
+);
 
 
 // let __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/frontend/build")))
-app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
-})
+
 app.use((err, req, res, next)=>{
     res.status(500).send({message: err.message})
 })
@@ -36,7 +37,7 @@ app.use((err, req, res, next)=>{
 
 
 
-
-app.listen(process.env.PORT || 6000, function siu() {
-    console.log(`running at port ${process.env.port}`)
+const port = process.env.PORT || 8000
+app.listen(port, ()=> {
+    console.log(`running at port ${port}`)
 })

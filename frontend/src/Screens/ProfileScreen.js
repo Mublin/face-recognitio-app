@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getError } from '../Components/getError'
 import { Store } from '../Store'
 
@@ -25,6 +25,7 @@ const reducer = (state, action)=>{
 }
 export default function ProfileScreen() {
   const {id} = useParams()
+  const navigate = useNavigate()
   const {state, dispatch: Cdispatch } = useContext(Store)
   const {userInfo} = state
   const [{loading, error}, dispatch] = useReducer(reducer, {
@@ -36,12 +37,12 @@ export default function ProfileScreen() {
   const [dob, setDOB] = useState()
   const [profilepic, setProfilepic] = useState("")
   // console.log(fullName, username, email)
-  console.log(id)
+  // console.log(id)
   const submitHandler = async (e)=>{
     e.preventDefault()
     try {
       dispatch({type:"UPDATE_REQUEST"})
-      const {data} = await axios.put(`http://localhost:4550/api/users/profile/${userInfo.username}/update`,
+      const {data} = await axios.put(`http://localhost:4550/api/users/profile/update`,
       {
         fullName,
         username,
@@ -53,11 +54,12 @@ export default function ProfileScreen() {
           Authorization: `Bearer ${userInfo.token}`
         }
       })
-      console.log(data)
+      // console.log(data)
       Cdispatch({ type: "USER_SIGNIN_SUCCESS", payload: data.updatedUser})
       dispatch({type: "UPDATE_SUCCESS"})
       localStorage.setItem(userInfo, JSON.stringify(data.updatedUser))
-      window.alert("siuuu")
+      window.alert("User Updated Successful")
+      // navigate("/home")
     } catch (error) {
       window.alert(error)
     }
@@ -67,16 +69,17 @@ export default function ProfileScreen() {
     const fetchData = async ()=>{
       dispatch({type: "FETCH_REQUEST"});
     try {
-      const {data} = await axios.get(`/api/users/profile/${id}`,{
+      const {data} = await axios.get(`http://localhost:4550/api/users/profile/${id}`,{
         headers: { Authorization: `Bearer ${userInfo.token}`}
       })
-      console.log(data)
+      // console.log(data)
       dispatch({type: "FETCH_SUCCESS"})
       setEmail(data.email);
       setFullname(data.name);
       setUsername(data.username);
       setProfilepic(data.picture)
       // setDOB(data.dob)
+      // console.log(userInfo)
     } catch (error) {
       dispatch({type:"FETCH_FAIL", payload: error})
       window.alert(getError(error))
@@ -85,27 +88,32 @@ export default function ProfileScreen() {
     fetchData()
   },[])
   return (
-    <div>
-      <main>
-        {loading ? <div>loading...</div> : error ? <h3>Error fetching data</h3> : <form onSubmit={submitHandler}>
+    <div className='action-screen'>
+      <section className='forms'>
+        {loading ? <div>loading...</div> : error ? <h3>Error fetching data</h3> : <form className='input' onSubmit={submitHandler}>
           <div>
             <label htmlFor='Profile-Pic'>
               <input type={'image'} name="Profile-Picture"/>
             </label>
           </div>
           <div>
-            <label htmlFor='Full-Name'>Full-Name:
+            <label htmlFor='Full-Name'>Full-Name <br></br>
               <input type={'text'} name="Full Name" value={fullName} onChange={(e)=>setFullname(e.target.value)} required/>
             </label>
           </div>
           <div>
-            <label htmlFor='Full-Name'>Email:
+            <label htmlFor='Full-Name'>Username <br></br>
+              <input disabled type={'text'} name="username" value={username}/>
+            </label>
+          </div>
+          <div>
+            <label className='password' htmlFor='Full-Name'>Email <br></br>
               <input type={'text'} name="Email" value={email} onChange={(e)=> setEmail(e.target.value)} required/>
             </label>
           </div>
-          <button type='submit'>submit</button>
+          <button type='submit' className='action'>submit</button>
         </form>}
-      </main>
+      </section>
     </div>
   )
 }

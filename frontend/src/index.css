@@ -12,6 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   list-style-type: none;
+  /* border: 2px solid green; */
 }
 
 code {
@@ -20,14 +21,87 @@ code {
 }
 .App{
   width: 100vw;
+  height: 100vh;
   background-image: url(./images/Mubleen_website_landscape_background_face_detection_image_afric_6978cfc6-f8e7-476d-bac0-f6b1dd60cb4b.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
   z-index: -100;
 }
-.home{
-  min-height: 90vh;
+@media only screen and (max-width: 750px) {
+  .App{
+    background-image: url(./images/Mubleen_website_landscape_background_face_detection_image_afric\ 2.0.jpg);
+    background-color: var(--color-background);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-height: 100vh;
+  }
+  .nav{
+    height: 15%;
+  }
+  .home{
+    max-height: 73vh !important;
+  }
+  .home.class{
+    height: 70%;
+  }
+  .home main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    margin: 0;
+  }
+  .action-screen{
+    width: 100vw;
+    height: 82vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .action-screen .input{
+    width: 50%;
+  }
+  section.forms{
+    width: 60%;
+    height: 72vh;
+  }
+  .input.sign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  section .forms{
+    width: 100vw;
+    height: 72vh;
+  }
+  nav div ul{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  nav div ul .sign{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .intro{
+    max-width: 70vw;
+  }
+  .App .home.divs{
+    display: flex;
+    max-height: 79vh;
+  }
+}
+
+
+
+
+
+.home.divs{
+  height: 90vh;
   color: #f0c600;
 }
 .foot, .nav{
@@ -60,6 +134,10 @@ nav{
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+}
+.action-screen{
+  width: 100vw;
+  height: 88vh;
 }
 button.action{
   padding: 6px 16px;
@@ -148,4 +226,37 @@ div .input{
   justify-content: center;
   cursor: pointer;
   z-index: 5;
+}
+.forms{
+  width: 100%;
+  height: 89vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form{
+  min-width: 290px;
+  box-shadow: 0px 0px 5px var(--color-yellow);
+}
+form.input{
+  border:  3px solid var(--color-blue);
+  background-color: var(--color-blue);
+  color: white;
+  margin-top: .5rem;
+  padding: 0rem 3rem;
+}
+form.input input{
+  width: 100%;
+  border-radius: 4px;
+}
+label{
+  width: 85%;
+  margin: 0 1.5rem;
+}
+form.input div{
+  margin-top: 1rem;
+  width: 100%;
+}
+form .password{
+  margin-bottom: 1rem;
 }

@@ -22,7 +22,7 @@ import { Store, StoreProvider } from './Store';
 //       return state
 //   }}
 function App() {
-  const {state, Cdispatch} = useContext(Store)
+  const {state, dispatch : Cdispatch} = useContext(Store)
     const {userInfo} = state
     const signOutHandler =()=>{
         Cdispatch({type: "SIGNOUT_SUCCESS"})
@@ -71,7 +71,7 @@ function App() {
             </div>
         </nav>
     </div>
-      <div className='home'>
+      {/* <div className='home divs'> */}
       <Routes>
       <Route path='/' element={<LandScreen />} />
       <Route path='/home' element={
@@ -88,7 +88,7 @@ function App() {
       <Route path='/signin' element={<SignInScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
       </Routes>
-      </div>
+      {/* </div> */}
       <Footer />
     </div>
   );
