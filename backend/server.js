@@ -5,7 +5,7 @@ const path = require("path")
 const userRouter = require("./routes/userRoute")
 const cors = require("cors")
 const mongoose = require("mongoose")
-const seedRouter = require("./routes/seedRoute")
+// const seedRouter = require("./routes/seedRoute")
 
 
 const app = express()
@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>{
 });
 
 app.use("/api/users", userRouter)
-app.use("/api/seed", seedRouter)
+// app.use("/api/seed", seedRouter)
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.get('*', (req, res) =>

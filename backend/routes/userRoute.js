@@ -1,5 +1,4 @@
 const express = require("express");
-const data = require("../data");
 const User = require("../models/userModel");
 const utils = require("../utils")
 const expressasynchandler = require("express-async-handler")

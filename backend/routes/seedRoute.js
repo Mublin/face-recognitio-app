@@ -1,5 +1,5 @@
 const express = require("express")
-const data = require("../data")
+// const data = require("../data")
 const User = require("../models/userModel")
 
 
