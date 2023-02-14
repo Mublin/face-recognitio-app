@@ -14,7 +14,7 @@ export default function HomeScreen() {
   // const inputRef = useRef()
   async function imageWork() {
     setImageUrl(imageSrc)
-    const {data} = await axios.post(`http://localhost:4550/api/users/image`, {
+    const {data} = await axios.post(`/api/users/image`, {
       imageSrc
     },{
       headers: {
