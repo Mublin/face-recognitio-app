@@ -55,7 +55,7 @@ export default function RegisterScreen() {
                         </label>
                     </div>
                     <div>
-                        <label htmlFor='username'>Username <br></br>
+                        <label htmlFor='username'>Username c8b13812999a458584af7db40bc1ad93<br></br>
                             <input type={"text"} name="username" onChange={(e)=> setUsername(e.target.value)} />
                         </label>
                     </div>
