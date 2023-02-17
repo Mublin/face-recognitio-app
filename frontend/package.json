@@ -1,6 +1,5 @@
 {
   "name": "face-detection",
-  "proxy": "http://localhost:10000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
