@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>{
 });
 
 app.use("/api/users", userRouter)
-app.use("/api/seed", seedRouter)
+// app.use("/api/seed", seedRouter)
 
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.get('*', (req, res) =>
