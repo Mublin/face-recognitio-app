@@ -28,6 +28,10 @@ code {
   color: white;
   z-index: -100;
 }
+.image-display{
+  width: 500px;
+  height: 600px;
+}
 @media only screen and (max-width: 750px) {
   .App{
     background-image: url(./images/Mubleen_website_landscape_background_face_detection_image_afric\ 2.0.jpg);
@@ -35,6 +39,10 @@ code {
     background-repeat: no-repeat;
     background-size: cover;
     max-height: 100vh;
+  }
+  .image-display{
+    width: 350px;
+    height: 450px;
   }
   .nav{
     height: 15%;
@@ -107,15 +115,16 @@ code {
   }
 }
 @media only screen and (max-width: 400px) {
-  *{
-    border: 2px solid white;
-  }
   .App{
     background-image: url(./images/Mubleen_website_landscape_background_face_detection_image_afric\ 2.0.jpg);
     background-color: var(--color-background);
     background-repeat: no-repeat;
     background-size: contain;
     max-height: 100vh;
+  }
+  .image-display{
+    width: 275px;
+    height: 300px;
   }
   .nav{
     height: 15%;
