@@ -106,6 +106,121 @@ code {
     width: 80vw;
   }
 }
+@media only screen and (max-width: 400px) {
+  *{
+    border: 2px solid white;
+  }
+  .App{
+    background-image: url(./images/Mubleen_website_landscape_background_face_detection_image_afric\ 2.0.jpg);
+    background-color: var(--color-background);
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-height: 100vh;
+  }
+  .nav{
+    height: 15%;
+  }
+  .home{
+    max-height: 73vh !important;
+  }
+  .home.class{
+    height: 70%;
+  }
+  .home main{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+    margin: 0;
+  }
+  .action-screen{
+    width: 100vw;
+    height: 82vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .action-screen .forms{
+    width: 70vw;
+  }
+  .action-screen .forms form{
+    width: 10px !important;
+    padding: 0;
+    margin: 0;
+  }
+  .action-screen .forms form.input.signin{
+    width: 100% !important;
+    margin: 0;
+    padding: 0 1rem;
+    min-width: 100% !important;
+  }
+  .action-screen .forms form.input.signin div{
+    padding: 0;
+    margin-top: 1rem;
+    width: 60vw;
+  }
+  .action-screen .forms form.input.signin label{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .action-screen .forms form.input.signin input{
+    width: 70%;
+    padding: 0;
+    margin: 0;
+  }
+  .action-screen .input{
+    width: 20%;
+  }
+  section.forms{
+    width: 30%;
+    height: 72vh;
+  }
+  .input.sign{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+  }
+  section .forms{
+    width: 80vw;
+    height: 72vh;
+  }
+  nav div ul{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  nav div ul .sign{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .intro{
+    max-width: 70vw;
+  }
+  .App .home.divs{
+    display: flex;
+    max-height: 79vh;
+  }
+  .zlatan{
+    transform: scale(0);
+  }
+  .home.class main{
+    margin: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 80vw;
+  }
+}
 
 
 @media only screen and (min-width: 751px) {
@@ -114,8 +229,39 @@ code {
     height: 88vh;
   }
 }
-
-
+.nav{
+  height: max-content !important;
+}
+.toggle{
+  visibility: visible !important;
+  transform: scale(1) !important;
+  height: 100% !important;
+  width: 20vw !important;
+}
+.nav nav .nav-adjust{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.nav nav .nav-adjust .fas{
+  /* position: absolute;s */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  right: -10px;
+  font-size: 2rem;
+}
+.nav nav{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between !important;
+  flex-direction: row;
+}
+nav i{
+  cursor: pointer;
+}
 .home.divs{
   height: 90vh;
   color: #f0c600;
@@ -140,6 +286,16 @@ nav ul{
   text-decoration: none;
   color: #f0c600;
   margin-right: 1.2rem;
+}
+.visible{
+  visibility: visible;
+  transform: scale(1);
+}
+.invisible{
+  visibility: hidden;
+  transform: scale(0);
+  height: 0;
+  width: 0;
 }
 .nav-item:hover{
   color: var(--color-blue);

@@ -43,7 +43,7 @@ export default function RegisterScreen() {
     <div className='action-screen'>
         <section>
             <div className='forms'>
-                <form className='input register' onSubmit={submitHandler}>
+                <form className='input signin' onSubmit={submitHandler}>
                     <div>
                         <label htmlFor='Full-Name'> Full-Name <br></br>
                             <input type={"text"} name="Full-Name" onChange={(e)=> setFullName(e.target.value)} />

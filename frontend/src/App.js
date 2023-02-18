@@ -28,26 +28,36 @@ function App() {
         Cdispatch({type: "SIGNOUT_SUCCESS"})
         localStorage.removeItem("userInfo")
     }
+
     // const [{loading, error}, dispatch] = useReducer(reducer, {
     //   error: ""
     // })
-  // useEffect(()=>{
-  //   const fetchData = async ()=>{
-  //     dispatch({type: "FETCH_REQUEST"});
-  //   try {
-  //     const {data} = await axios.get(`http://localhost:4550/api/users/profile/${userInfo.username}`,{
-  //       headers: { Authorization: `Bearer ${userInfo.token}`}
-  //     })
-  //     dispatch({type: "FETCH_SUCCESS"})
-  //     Cdispatch({type: "USER_SIGNIN_SUCCESS", payload: data})
-  //     localStorage.setItem(userInfo, JSON.stringify(data))
-  //   } catch (error) {
-  //     dispatch({type:"FETCH_FAIL", payload: error})
-  //     window.alert(getError(error))
-  //   }
-  //   }
-  //   fetchData()
-  // },[])
+  useEffect(()=>{
+    changeNav()
+    // console.log("siu")
+  },[])
+  const changeNav = ()=>{
+    // console.log(window.innerWidth)
+    if(window.innerWidth < 750){
+      let bars = document.querySelector(".fa-bars")
+      bars.classList.add("visible")
+      document.querySelector(".siu7").classList.add("invisible")
+    }else if(window.innerWidth > 749){
+      let bar = document.querySelector(".fa-bars")
+      bar.classList.remove("visible")
+      bar.classList.add("invisible")
+      let siu8 = document.querySelector(".siu8")
+      siu8.classList.remove("visible")
+      siu8.classList.add("invisible")
+    }else{
+      return
+    }
+  }
+  const openNav = ()=>{
+    console.log("click")
+    document.querySelector(".siu8").classList.toggle("toggle")
+  }
+  window.addEventListener("resize", changeNav)
   return (
     
     
@@ -58,8 +68,18 @@ function App() {
                 <img src='' alt='logo' />
             </div>
             {/* {console.log(state)} */}
-            <div>
-                <ul>
+            <div className='nav-adjust'>
+                <i className='fas fa-bars' onClick={openNav}></i>
+                <ul className='siu8 invisible'>
+                    <li><Link to={"/"} className="nav-item">Home</Link></li>
+                    {/* {console.log(userInfo)} */}
+                    <li><Link to={"/about"} className="nav-item">About Us</Link></li>
+                    <li><Link to={"/contact"} className="nav-item">Contact Us</Link></li>
+                    { userInfo && userInfo.username ? <div className='sign'><li className='nav-item name'><Link to={`/profile/${userInfo.username}`} className="nav-item">{userInfo.username}</Link></li> <li><Link to="/" className="nav-item"><button className='action' onClick={signOutHandler}>SIGN OUT</button></Link></li></div> : ( 
+                    <div className='sign'><li><Link to="/signin" className="nav-item"><button className='action'>LOG IN</button></Link></li>
+                    <li><Link to="/register" className="nav-item"><button className='action'>SIGN UP</button></Link></li></div>)}
+                </ul>
+                <ul className='siu7'>
                     <li><Link to={"/"} className="nav-item">Home</Link></li>
                     {/* {console.log(userInfo)} */}
                     <li><Link to={"/about"} className="nav-item">About Us</Link></li>

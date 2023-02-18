@@ -25,7 +25,7 @@ const reducer = (state, action)=>{
 }
 export default function ProfileScreen() {
   const {id} = useParams()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const {state, dispatch: Cdispatch } = useContext(Store)
   const {userInfo} = state
   const [{loading, error}, dispatch] = useReducer(reducer, {
